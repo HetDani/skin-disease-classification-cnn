@@ -1,0 +1,14 @@
+acne
+actinic_keratosis
+alopecia
+eczema
+basal_cell_carcinoma
+cutaneous_horn
+melanoma
+herpes_zoster
+nail_diseases
+molluscum
+normal_skin
+normal_nail
+rosacea
+tinea_corporis
