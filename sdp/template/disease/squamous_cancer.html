@@ -1,0 +1,200 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+  #images h1{
+    padding-top: 30px;
+  }
+  #images img{
+    width: 250px;
+    height: auto;
+    padding-bottom: 30px;
+    padding-right: 5px;      
+    padding-left: 5px;
+  }
+  .middle{
+    padding-left: 0px !important;
+    height: 185px !important;
+    width: auto !important;
+  }
+
+       li{
+    text-align: left;
+  }
+ 
+  ul{
+    display: inline-block; 
+    text-align: left; 
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  *{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+  }
+  p{
+    padding: 0px 50px 0px 50px;
+    line-height: 2; 
+  }
+  .blue{
+    background-color: #B2DDED;
+    color: 283779;
+  }
+  .white{
+    background-color: white;
+    color: #283779;
+  }
+  #header, #whatitis, #symptom, #doctor, #howto, footer{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  h1{
+    padding-bottom: 30px;
+  }
+  a{
+    color: white;
+    font-weight: bold;
+  }
+  li{
+    line-height: 2; 
+  }
+
+  #header h1{
+    font-size: 50px;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0px dotted black;
+  }
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 3px 5px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+</style>
+
+{% if type != 'info' %}
+<section id = "header" class = "blue"> 
+  <h1>You have {{ title }}</h1><br>
+  <h4>We have detected that your image shows signs of {{ title }} 
+    {% if accuracy != 'test' %} with an Accuracy of {{ accuracy }}% {% endif %} 
+  </h4>
+</section>
+{% else %}
+{% endif %}
+    
+    <!--What it is section begins-->
+    <section id = "whatitis"class = "white">
+      <h1>What is squamous cell carcinoma?</h1>
+      <p>Squamous cell carcinoma of the skin is a common form of skin cancer that develops in the squamous cells that make up the middle and outer layers of the skin.</p>
+    </section>
+
+    <!--Symptom section begins-->
+    <section id = "symptom" class = "blue">
+      <h1>Symptoms</h1>
+      <p><b>Squamous cell carcinoma of the skin most often occurs on sun-exposed skin, such as your scalp, the backs of your hands, your ears or your lips. But it can occur anywhere on your body, including inside your mouth, the bottoms of your feet and on your genitals.</b></p><br>
+      <ul>
+        <li>A firm, red nodule</li>
+        <li>A flat sore with a scaly crust</li>
+        <li>A new sore or raised area on an old scar or ulcer</li>
+        <li>A rough, scaly patch on your lip that may evolve to an open sore</li>
+        <li>A red sore or rough patch inside your mouth</li>
+        <li>A red, raised patch or wartlike sore on or in the anus or on your genitals</li>
+      </ul>
+    </section>
+
+    <!--Doctor section begins-->
+    <section id = "doctor"class = "white">
+      <h1>When to see a doctor</h1>
+      <p>Make an appointment with your doctor if you have a sore or scab that doesn't heal in about two months or a flat patch of scaly skin that won't go away.</p>
+    </section>
+
+    <!--How to section begins-->
+    <section id = "howto" class = "blue">
+      <h1>How to treat squamous cell carcinoma</h1>
+      <ul>
+        <li>Avoid the sun during the middle of the day</li>
+        <li>Wear sunscreen year-round</li>
+        <li>Wear protective clothing from the sun</li>
+      </ul>
+    </section>
+<!-- <section id = "images" class = "white">
+      <h1>Example Images </h1>
+      <img src = "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/mrtest_squamous_cell_carcinoma_lesion_other/280x190_mrtest_squamous_cell_carcinoma_lesion_other.jpg"> </img>
+      <img src = "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/image_article_collections/mcgraw_hill_skin_atlases/adult_skin_problems/FCASCD_squamous_cell_carcinoma_bowens_disease.jpg?resize=646px:*&output-quality=100" class = "middle"> </img>
+      <img src = "https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/eb641431-2361-4356-a0fa-b27263feaf8e/gr1.jpg"> </img>
+
+    </section> -->
+
+    <section id="suggestdoctor">
+      <a class="et_pb_button et_pb_button_3 et_pb_bg_layout_dark" onClick="return suggestdoc();" style="cursor:pointer">Want us to suggest you doctors in your area?</a>
+    </section>
+  
+      <script>
+  
+  
+            function suggestdoc() {
+              if (window.navigator.geolocation) {
+                window.navigator.geolocation.getCurrentPosition(getPosition)
+            }
+            else {
+                alert('Geolocation not supported by your browser')
+            }
+            }
+  
+            function getPosition(position) {
+                computeCity(position.coords.latitude, position.coords.longitude)
+            }
+  
+            //using opencage API's data which will tell us about the city name from coordinates
+            function computeCity(lati, long) {
+                fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lati}+${long}&key=7d0266b0bdde4185b5fb4a9bbf45de2a`)
+                    .then(res => res.json())
+                    .then(location => {
+                        findDoctors(location.results[0].components.state_district)
+                    })
+                    .catch(() => {
+                        alert('Error reported from server, maybe try later?')
+                    })
+            }
+  
+            //using openweathermap API to get city via reverse geocoding
+            function findDoctors(city) {
+                var iframe = document.querySelector('iframe')
+              var test = `https://www.google.com/search?q={{ title }}+doctors+in+${city}`
+              window.open(test, "_blank")            }
+    </script>
+  
+  {% endblock content %}
+  

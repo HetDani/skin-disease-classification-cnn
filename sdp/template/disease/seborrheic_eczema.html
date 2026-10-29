@@ -1,0 +1,197 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+  #images h1{
+    padding-top: 30px;
+  }
+  #images img{
+    width: 250px;
+    height: auto;
+    padding-bottom: 30px;
+    padding-right: 5px;      
+    padding-left: 5px;
+  }
+  .middle{
+    padding-left: 0px !important;
+    height: 185px !important;
+    width: auto !important;
+  }
+
+       li{
+    text-align: left;
+  }
+ 
+  ul{
+    display: inline-block; 
+    text-align: left; 
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  *{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+  }
+  p{
+    padding: 0px 50px 0px 50px;
+    line-height: 2; 
+  }
+  .blue{
+    background-color: #B2DDED;
+    color: 283779;
+  }
+  .white{
+    background-color: white;
+    color: #283779;
+  }
+  #header, #whatitis, #symptom, #doctor, #howto, footer{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  h1{
+    padding-bottom: 30px;
+  }
+  a{
+    color: white;
+    font-weight: bold;
+  }
+  li{
+    line-height: 2; 
+  }
+
+  #header h1{
+    font-size: 50px;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0px dotted black;
+  }
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 3px 5px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+</style>
+
+{% if type != 'info' %}
+<section id = "header" class = "blue"> 
+  <h1>You have {{ title }}</h1><br>
+  <h4>We have detected that your image shows signs of {{ title }} 
+    {% if accuracy != 'test' %} with an Accuracy of {{ accuracy }}% {% endif %} 
+  </h4>
+</section>
+{% else %}
+{% endif %}
+    
+    <!--What it is section begins-->
+    <section id = "whatitis"class = "white">
+      <h1>What is seborrheic egzma?</h1>
+      <p>Seborrheic dermatitis is a common skin condition that mainly affects your scalp. It causes scaly patches, red skin and stubborn dandruff. Seborrheic dermatitis can also affect oily areas of the body, such as the face, sides of the nose, eyebrows, ears, eyelids and chest.</p>
+    </section>
+
+    <!--Symptom section begins-->
+    <section id = "symptom" class = "blue">
+      <h1>Symptoms</h1>
+      <ul>
+        <li>Skin flakes (dandruff) on your scalp, hair, eybrows, beard or mustache</li>
+        <li>Patches of greasy skin covered with flaky white or yellow scales or crust on the scalp, face, sides of the nose, eyebrows, ears, eyelids, chest, armpits, groin area or under the breasts</li>
+        <li>Red skin</li>
+        <li>Itching</li>
+      </ul>
+    </section>
+
+    <!--Doctor section begins-->
+    <section id = "doctor"class = "white">
+      <h1>When to see a doctor</h1>
+      <p>See your doctor if you're so uncomfortable that you are losing sleep or being distracted form your daily routines, your condition is causing embarrassment and anxiety, you suspect your skin is infected, or you've tried self-care steps without success</p>
+    </section>
+
+    <!--How to section begins-->
+    <section id = "howto" class = "blue">
+      <h1>How to treat seborrheic eczema</h1>
+      <ul>
+        <li>Creams, shampoos or ointments that control inflammation</li>
+        <li>Antifungal gels</li>
+        <li>Antifungal medication</li>
+      </ul>
+    </section>
+<!-- <section id = "images" class = "white">
+      <h1>Example Images </h1>
+      <img src = "https://cdn.shopify.com/s/files/1/0217/4288/files/BL-seb-derm_1024x1024.jpg?v=1579714449"> </img>
+      <img src = "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/guide_to_seborrheic_dermatitis_slideshow/1800ss_science_source_rm_seborrheic_dermatitis_nasal_fold.jpg" class = "middle"> </img>
+      <img src = "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/Image-Galleries/Seborrheic-Dermatitis/seborrheic_dermatitis_cradle_cap.jpg?w=1155"> </img>
+
+    </section> -->
+
+    <section id="suggestdoctor">
+      <a class="et_pb_button et_pb_button_3 et_pb_bg_layout_dark" onClick="return suggestdoc();" style="cursor:pointer">Want us to suggest you doctors in your area?</a>
+    </section>
+  
+      <script>
+  
+  
+            function suggestdoc() {
+              if (window.navigator.geolocation) {
+                window.navigator.geolocation.getCurrentPosition(getPosition)
+            }
+            else {
+                alert('Geolocation not supported by your browser')
+            }
+            }
+  
+            function getPosition(position) {
+                computeCity(position.coords.latitude, position.coords.longitude)
+            }
+  
+            //using opencage API's data which will tell us about the city name from coordinates
+            function computeCity(lati, long) {
+                fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lati}+${long}&key=7d0266b0bdde4185b5fb4a9bbf45de2a`)
+                    .then(res => res.json())
+                    .then(location => {
+                        findDoctors(location.results[0].components.state_district)
+                    })
+                    .catch(() => {
+                        alert('Error reported from server, maybe try later?')
+                    })
+            }
+  
+            //using openweathermap API to get city via reverse geocoding
+            function findDoctors(city) {
+                var iframe = document.querySelector('iframe')
+              var test = `https://www.google.com/search?q={{ title }}+doctors+in+${city}`
+              window.open(test, "_blank")            }
+    </script>
+  
+  {% endblock content %}
+  

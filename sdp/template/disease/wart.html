@@ -1,0 +1,198 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+  #images h1{
+    padding-top: 30px;
+  }
+  #images img{
+    width: 250px;
+    height: auto;
+    padding-bottom: 30px;
+    padding-right: 5px;      
+    padding-left: 5px;
+  }
+  .middle{
+    padding-left: 0px !important;
+    height: 185px !important;
+    width: auto !important;
+  }
+
+       li{
+    text-align: left;
+  }
+ 
+  ul{
+    display: inline-block; 
+    text-align: left; 
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  *{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+  }
+  p{
+    padding: 0px 50px 0px 50px;
+    line-height: 2; 
+  }
+  .blue{
+    background-color: #B2DDED;
+    color: 283779;
+  }
+  .white{
+    background-color: white;
+    color: #283779;
+  }
+  #header, #whatitis, #symptom, #doctor, #howto, footer{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  h1{
+    padding-bottom: 30px;
+  }
+  a{
+    color: white;
+    font-weight: bold;
+  }
+  li{
+    line-height: 2; 
+  }
+
+  #header h1{
+    font-size: 50px;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0px dotted black;
+  }
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 3px 5px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+</style>
+
+{% if type != 'info' %}
+<section id = "header" class = "blue"> 
+  <h1>You have {{ title }}</h1><br>
+  <h4>We have detected that your image shows signs of {{ title }} 
+    {% if accuracy != 'test' %} with an Accuracy of {{ accuracy }}% {% endif %} 
+  </h4>
+</section>
+{% else %}
+{% endif %}
+    
+    <!--What it is section begins-->
+    <section id = "whatitis"class = "white">
+      <h1>What is a wart?</h1>
+      <p>Common warts are small, grainy skin growths that occur most often on your fingers or hands. Rough to the touch, common warts also often feature a pattern of tiny black dots, which are small, clotted blood vessels.</p>
+      </section>
+    <!--Symptom section begins-->
+    <section id = "symptom" class = "blue">
+      <h1>Symptoms</h1>
+      <ul>
+        <li>Small, fleshy, grainy bumps</li>
+        <li>Flesh-colored, white, pink or tan</li>
+        <li>Rough to the touch</li>
+        <li>Sprinkled with black pinpoints, which are small, clotted blood vessels</li>
+      </ul>
+    </section>
+
+    <!--Doctor section begins-->
+    <section id = "doctor"class = "white">
+      <h1>When to see a doctor</h1>
+      <p>See your doctor for common warts if the growths are painful or change in appearance or color, you've tried treating the warts, but they persist, spread or recur, the growths are bothersome and interfere with activities, you aren't sure whether the growths are warts, or you are an adult and numerous warts begin to appear, which may indicate the immune system is malfunctioning</p>
+    </section>
+
+    <!--How to section begins-->
+    <section id = "howto" class = "blue">
+      <h1>How to reduce the risk of getting warts</h1>
+      <ul>
+        <li>Stronger peeling medicine (salicylic acid)</li>
+        <li>Freezing (cryotherapy)</li>
+        <li>Other acids</li>
+        <li>Minor surgery</li>
+        <li>Laser treatment</li>
+      </ul>
+    </section>
+<!-- <section id = "images" class = "white">
+      <h1>Example Images </h1>
+      <img src = "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/slideshows/visual_guide_to_warts_slideshow/650x350_visual_guide_to_warts_slideshow.jpg"> </img>
+      <img src = "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/visual_guide_to_warts_slideshow/493ss_science_source_rm_closeup_filiform_warts.jpg" class = "middle"> </img>
+      <img src = "https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/800/cached.offlinehbpl.hbpl.co.uk/news/PGH/plantar_viral_warts-20170531012346877.jpg"> </img>
+
+    </section> -->
+
+    <section id="suggestdoctor">
+      <a class="et_pb_button et_pb_button_3 et_pb_bg_layout_dark" onClick="return suggestdoc();" style="cursor:pointer">Want us to suggest you doctors in your area?</a>
+    </section>
+  
+      <script>
+  
+  
+            function suggestdoc() {
+              if (window.navigator.geolocation) {
+                window.navigator.geolocation.getCurrentPosition(getPosition)
+            }
+            else {
+                alert('Geolocation not supported by your browser')
+            }
+            }
+  
+            function getPosition(position) {
+                computeCity(position.coords.latitude, position.coords.longitude)
+            }
+  
+            //using opencage API's data which will tell us about the city name from coordinates
+            function computeCity(lati, long) {
+                fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lati}+${long}&key=7d0266b0bdde4185b5fb4a9bbf45de2a`)
+                    .then(res => res.json())
+                    .then(location => {
+                        findDoctors(location.results[0].components.state_district)
+                    })
+                    .catch(() => {
+                        alert('Error reported from server, maybe try later?')
+                    })
+            }
+  
+            //using openweathermap API to get city via reverse geocoding
+            function findDoctors(city) {
+                var iframe = document.querySelector('iframe')
+              var test = `https://www.google.com/search?q={{ title }}+doctors+in+${city}`
+              window.open(test, "_blank")            }
+    </script>
+  
+  {% endblock content %}
+  
