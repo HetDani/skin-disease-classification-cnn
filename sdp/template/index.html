@@ -1,0 +1,291 @@
+{% extends "layout.html" %}
+{% block content %}
+      <section class="py-xxl-10 max-mt-xl-100 pb-0" id="home">
+        <div class="bg-holder bg-size bgic-1">
+        </div>
+
+        <div class="container">
+          <div class="row min-vh-xl-100 min-vh-xxl-25">
+            <div class="col-md-5 col-xl-6 col-xxl-7 order-0 order-md-1 text-end"><img class="pt-7 pt-md-0 w-100" src="{{ url_for('static', filename='img/gallery/clinical-dermatology.jpg') }}" style="border-radius: 50px;" alt="hero-header" /></div>
+            <div class="col-md-75 col-xl-6 col-xxl-5 text-md-start text-center py-6">
+              <h1 class="fw-light font-base fs-6 fs-xxl-7">Get an instant skin disease diagnosis. </strong></h1>
+              <p class="fs-1 mb-5">Detect and Identify your skin problems and learn <br/> how to treat it just by uploading a photo.</p><a class="btn btn-lg btn-primary rounded-pill" href="{{ url_for('detect_disease') }}" role="button">Diagnose Now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="info" class="s-works ">
+
+        <div class="container intro-wrap">
+                
+            <div class="row" >
+                <div class="col-12">
+                    <h1 class="">What are skin disorders?</h1>
+                </div>
+
+        	<div class="col-12 pt-5" >
+
+        	<img src="{{ url_for('static', filename='img/gallery/ISIC_0024468.jpg') }}" style="height: 200px; ">
+        	<img src="{{ url_for('static', filename='img/gallery/ISIC_0024930.jpg') }}" style="height: 200px; ">
+
+        	<p class=" pt-5" style="text-align: center;">
+            Skin disorders vary greatly in symptoms and severity. They can be temporary or permanent, and 
+            may be painless or painful. Some have situational causes, while others may be genetic. Some skin 
+            conditions are minor, and others can be life-threatening. While most skin disorders are minor, 
+            others can indicate a more serious issue. 
+        </p>
+        <p style="text-align: center;">
+            In the observational study, skin diseases contributed 1.79% to the global burden of disease 
+            measured in disability-adjusted life years (DALYs). Skin diseases arranged in order of decreasing 
+            global DALYs are as follows: dermatitis (atopic, contact, seborrheic), acne vulgaris, urticaria, 
+            psoriasis, viral skin diseases, fungal skin diseases, scabies, melanoma, pyoderma, cellulitis, 
+            keratinocyte carcinoma, decubitus ulcer, and alopecia areata. Skin diseases remain a major cause 
+            of disability worldwide. An objective measure of burden, such as the DALY, allows for comparison
+            of diverse diseases across geography and time.
+        </p>
+        <p style="text-align: center;">
+            Disability secondary to skin conditions is substantial worldwide. The Global Burden of Disease 
+            Study 2013 includes estimates of global morbidity and mortality due to skin diseases. 
+            For nonfatal estimates, data were found by literature search using PubMed and Google Scholar 
+            in English and Spanish for years 1980 through 2013 and by accessing administrative data on 
+            hospital inpatient and outpatient episodes. Data for fatal estimates were based on vital 
+            registration and verbal autopsy data.
+        </p>
+        <p style="text-align: center;">
+            Skin conditions contributed 1.79% to the global burden of disease measured in DALYs from 
+            306 diseases and injuries in 2013. Individual skin diseases varied in size from 0.38% of total
+            burden for dermatitis (atopic, contact, and seborrheic dermatitis), 0.29% for acne vulgaris, 
+            0.19% for psoriasis, 0.19% for urticaria, 0.16% for viral skin diseases, 0.15% for fungal skin 
+            diseases, 0.07% for scabies, 0.06% for malignant skin melanoma, 0.05% for pyoderma, 0.04% for
+            cellulitis, 0.03% for keratinocyte carcinoma, 0.03% for decubitus ulcer, and 0.01% for alopecia
+            areata. All other skin and subcutaneous diseases composed 0.12% of total DALYs.
+        </p>
+        <p style="text-align: center;">
+            Skin and subcutaneous diseases were the 18th leading cause of global DALYs in Global Burden 
+            of Disease 2013. Excluding mortality, skin diseases were the fourth leading cause of disability 
+            worldwide.
+        </p>
+        <p style="text-align: center;">
+            So there is a need to help people worldwide with skin disease. Therefore, the idea of this application
+            arises. Our application helps people to get to know which disease they are going through. 
+            Patient need to sign up to our application for running diagnose test. After signing up, they 
+            have to upload an image of the area where they have symptoms. Using deep learning, we built an  
+            application which will predict the disease they are suffering from.
+            </p>
+        	</div>
+
+        </div> 
+
+        
+    </section>
+
+      <section class="py-0">
+
+        <div class="et_pb_section et_pb_section_4 doctors et_pb_with_background et_section_regular">
+          <div class="et_pb_row et_pb_row_11">
+            <div class="et_pb_column et_pb_column_4_4 et_pb_column_18  et_pb_css_mix_blend_mode_passthrough et-last-child">
+              <div
+                class="et_pb_module  et_pb_text_11 et_pb_animation_left et-animated et-waypoint et_pb_text_align_center et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <h2 style="text-align: center;"><span style="color: #333333;"><span style="color: #283779;">Our team can give
+                        information on a wide variety of Skin conditions. From Acne to Melanoma we can support you. Conditions
+                        include:</span>&nbsp;</span></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row et_pb_row et_pb_row_12 et_pb_row_4col">
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_19  et_pb_css_mix_blend_mode_passthrough">
+              <div class="et_pb_module et_pb_text et_pb_text_12  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a href="{{ url_for('acne', type='info') }}"><b>Acne</b></a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_20  et_pb_css_mix_blend_mode_passthrough">
+              <div class="et_pb_module et_pb_text et_pb_text_13  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a href="{{ url_for('rosacea', type='info') }}"><b>Rosacea</b></a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_21  et_pb_css_mix_blend_mode_passthrough">
+              <div class="et_pb_module et_pb_text et_pb_text_14  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a href="{{ url_for('eczema', type='info') }}"><b>Eczema</b></a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_22  et_pb_css_mix_blend_mode_passthrough et-last-child">
+              <div class="et_pb_module et_pb_text et_pb_text_15  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a href="{{ url_for('melanoma', type='info') }}"><b>Melanoma</b></a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_22  et_pb_css_mix_blend_mode_passthrough et-last-child">
+              <div class="et_pb_module et_pb_text et_pb_text_15  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a href="{{ url_for('nail_diseases', type='info') }}"><b>Nail Diseases</b></a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_22  et_pb_css_mix_blend_mode_passthrough et-last-child">
+              <div class="et_pb_module et_pb_text et_pb_text_15  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a href="{{ url_for('basal_cell_carcinoma', type='info') }}"><b>Basal Cell Carcinoma</b></a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row et_pb_row et_pb_row_13 et_pb_row_4col">
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_23  et_pb_css_mix_blend_mode_passthrough">
+              <div class="et_pb_module et_pb_text et_pb_text_16  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a href="{{ url_for('actinic_keratosis', type='info') }}"><b>Actinic Keratosis</b></a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_24  et_pb_css_mix_blend_mode_passthrough">
+              <div class="et_pb_module et_pb_text et_pb_text_17  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a href="{{ url_for('tinea_corporis', type='info') }}"><b>Tinea Corporis</b></a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_25  et_pb_css_mix_blend_mode_passthrough">
+              <div class="et_pb_module et_pb_text et_pb_text_18  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a href="{{ url_for('alopecia', type='info') }}"><b>Alopecia</b></a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_25  et_pb_css_mix_blend_mode_passthrough">
+              <div class="et_pb_module et_pb_text et_pb_text_18  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a href="{{ url_for('molluscum', type='info') }}"><b>Molluscum</b></a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_26  et_pb_css_mix_blend_mode_passthrough et-last-child">
+              <div class="et_pb_module et_pb_text et_pb_text_19  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a
+                      href="{{ url_for('herpes_zoster', type='info', accuracy='test') }}"><b>Herpes Zoster</b></a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 et_pb_column et_pb_column_1_4 et_pb_column_26  et_pb_css_mix_blend_mode_passthrough et-last-child">
+              <div class="et_pb_module et_pb_text et_pb_text_19  et_pb_text_align_left et_pb_bg_layout_light">
+                <div class="et_pb_text_inner">
+                  <p style="text-align: center;"><a
+                      href="{{ url_for('cutaneous_horn', type='info', accuracy='test') }}"><b>Cutaneous Horn</b></a></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="et_pb_row et_pb_row_14">
+            <div class="et_pb_column et_pb_column_4_4 et_pb_column_27  et_pb_css_mix_blend_mode_passthrough et-last-child">
+              <div class="et_pb_button_module_wrapper et_pb_button_3_wrapper et_pb_button_alignment_center et_pb_module ">
+                <a class="et_pb_button et_pb_button_3 et_pb_bg_layout_dark"
+                  href="{{ url_for('detect_disease') }}">Detect Skin Diseases</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="bg-secondary">
+        <div class="bg-holder bgic-3">
+        </div>
+
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{ url_for('static', filename='img/gallery/test.png') }}" alt="..." /></div>
+            <div class="col-md-7 col-xxl-6 text-center text-md-start">
+              <h2 class="fw-bold text-light mb-4 mt-4 mt-lg-0">View your results and find out if you need medical attention.</h2>
+              <p class="text-light">We've built this website to help diagnose skin conditions while educating users about dermatology. Our system can detect over 22 of the most common skin diseases. <br class="d-none d-sm-block" />For us, there is nothing more important than the health of <br class="d-none d-sm-block" />you and your loved ones. </p>
+              <!-- <div class="py-3"><a class="btn btn-lg btn-light rounded-pill" href="#!" role="button">Learn more </a></div> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pb-0" id="about">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-12 py-3">
+              <div class="bg-holder bg-size bgic-4">
+              </div>
+
+              <h1 class="text-center">ABOUT US</h1>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="py-5">
+        <div class="bg-holder bg-size bgic-5">
+        </div>
+
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 order-lg-1 mb-5 mb-lg-0"><img class="fit-cover w-100" src="{{ url_for('static', filename='img/gallery/JHS_International-2.jpg') }}" alt="..." /></div>
+            <div class="col-md-6 text-center text-md-start">
+              <h2 class="fw-bold mb-4">The New Age Skin Disease <br/> Detection and Identification</h2>
+              <p>We have developed an automated system for the detection and diagnosis of 22 common skin diseases by using data from clinical image. We have used state of the art Deep Learning methods and developed a Convulational Neural Network which which is fast , efficient and reliable. 
+                Our aim is to make the procedure as simple as possible for our patients and to offer diagnosis no matter where they are.
+              </p>
+              <div class="py-3">
+                <!-- <button class="btn btn-lg btn-outline-primary rounded-pill" type="submit">Learn more </button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-12 py-3">
+              <!-- <div class="bg-holder bg-size bgic-12">
+              </div>
+
+              <h1 class="text-center">RECENT BLOGS</h1> -->
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+      <section class="bg-primary py-5 max-mb-xl-100">
+        <div class="bg-holder bg-size bgic-14">
+        </div>
+
+        <div class="container">
+          <div class="row " style="align-items: center;   justify-content: space-between;">
+            <div class="col-lg-8">
+              <h2 class="fw-bold text-light">Discover causes, symptoms, and treatments for your skin.</h2>
+              <p class="text-soft-primary">
+                Our platform that helps you diagnose your skin diseases. Simply upload a photo of a problem on your skin to learn more about it, and start your skin treatment journey.
+                So start your journey by just simplying creating an account or login if you already have an account.
+              </p>
+            </div>
+            <div class="col-lg-3">
+              <a class="btn btn-xl btn-light rounded-3 px-5 py-3" href="{{ url_for('login') }}">Login/Register</a>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+     
+
+{% endblock content %}

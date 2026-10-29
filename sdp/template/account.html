@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section class="py-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 py-2">
+          <div class="bg-holder bg-siz">
+          </div>
+
+          <h1 class="text-center">MY ACCOUNT</h1>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="py-2">
+    <div class="container">
+      <div class="row justify-content-center align-center">
+        <div class="bg-holder bg-size bgic-11">
+        </div>
+
+        <div class="col-lg-6 z-index-2 mb-5">
+            <legend class="text-center">Account Info</legend>
+        <div class="media">
+            <div class="media-body text-center">
+                <img class="rounded-circle accountimg" src="{{ image_file }}" alt="..." />
+              <h2 class="account-heading"><span class="text-secondary">Username: </span>{{ current_user.username }}</h2>
+              <h2 class="account-heading"><span class="text-secondary">EmailId: </span>{{ current_user.email }}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 z-index-2">
+            <form method="POST" action="" class="row g-3" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <legend class="text-center">Update Info</legend>
+                <div class="col-md-12">
+                    {{ form.username.label(class="form-label visually-hidden") }}
+                         {% if form.username.errors %}
+                             {{ form.username(class="form-control form-control-lg is-invalid") }}
+                             <div class="invalid-feedback">
+                                 {% for error in form.username.errors %}
+                                     <span>{{ error }}</span>
+                                 {% endfor %}
+                             </div>
+                    {% else %}
+                      {{ form.username(class="form-control form-livedoc-control", placeholder="Username") }}
+                    {% endif %}
+                 </div>
+            <div class="col-md-12">
+               {{ form.email.label(class="form-label visually-hidden") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+               {% else %}
+                 {{ form.email(class="form-control form-livedoc-control", placeholder="Email") }}
+               {% endif %}
+            </div>
+            <div class="col-md-12 pt-2">
+                {{ form.picture.label(class="form-label") }}
+                {{ form.picture(class="form-control-file form-control form-control-lg is-invalid") }}
+                {% if form.picture.errors %}
+                    {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col-12 pt-3 text-center">
+                {{ form.submit(class="btn btn-primary rounded-pill") }}
+           </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- <div class="content-section">
+  
+        <form method="POST" action="" >
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Account Info</legend>
+                <div class="form-group">
+                    {{ form.username.label(class="form-control-label") }}
+
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.picture.label() }}
+                    {{ form.picture(class="form-control-file") }}
+                    {% if form.picture.errors %}
+                        {% for error in form.picture.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div> -->
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section class="py-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 py-2">
+          <div class="bg-holder bg-siz">
+          </div>
+
+          <h1 class="text-center">SKIN DISEASE DETECTION</h1>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="py-2">
+    <div class="container">
+      <div class="row justify-content-center align-center">
+        <div class="bg-holder bg-size bgic-11">
+        </div>
+        <div class="col-lg-6 z-index-2 mb-5"><img class="w-90" src="{{ url_for('static', filename='img/gallery/medicalpres.png') }}" alt="..." /></div>
+        <div class="col-lg-6 z-index-2">
+            <form method="POST" action="" class="row g-3" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <legend class="text-center">Upload an image for skin detection/diagnosis</legend>
+              <div class="col-md-12 pt-2">
+                <!-- {{ form.picture.label(class="form-label") }} -->
+                {{ form.picture(class="form-control-file form-control form-control-lg is-invalid") }}
+                {% if form.picture.errors %}
+                    {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col-12 pt-3 text-center">
+                {{ form.submit(class="btn btn-primary rounded-pill") }}
+           </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock content %}

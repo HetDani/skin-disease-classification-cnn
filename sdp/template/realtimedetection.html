@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="{{ url_for('static', filename='/js/p5.js') }}"></script>
+<script src="{{ url_for('static', filename='/js/p5.dom.min.js') }}"></script>
+<script src="{{ url_for('static', filename='/js/p5.sound.min.js') }}"></script>
+<script src="{{ url_for('static', filename='/js/ml5.min.js') }}"></script>
+
+    <section class="py-2">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 py-2">
+              <div class="bg-holder bg-siz">
+              </div>
+    
+              <h1 class="text-center">REAL TIME SKIN DISEASE DETECTION</h1>
+            </div>
+          </div>
+        </div>
+    
+      </section>
+    
+    <script src="{{ url_for('static', filename='/js/sketch.js') }}"></script>
+{% endblock content %}

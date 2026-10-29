@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section class="py-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 py-2">
+          <div class="bg-holder bg-siz">
+          </div>
+
+          <h1 class="text-center">REGISTER</h1>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="py-2">
+    <div class="container">
+      <div class="row justify-content-center align-center">
+        <div class="bg-holder bg-size bgic-11">
+        </div>
+
+        <div class="col-lg-6 z-index-2 mb-5"><img class="w-100" src="{{ url_for('static', filename='img/gallery/login1.jpg') }}" alt="..." /></div>
+        <div class="col-lg-6 z-index-2">
+            <form method="POST" action="" class="row g-3">
+                {{ form.hidden_tag() }}
+            <div class="col-md-6">
+               {{ form.username.label(class="form-label visually-hidden") }}
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+               {% else %}
+                 {{ form.username(class="form-control form-livedoc-control", placeholder="Username") }}
+               {% endif %}
+            </div>
+            <div class="col-md-6">
+                {{ form.email.label(class="form-label visually-hidden") }}
+                     {% if form.email.errors %}
+                         {{ form.email(class="form-control form-control-lg is-invalid") }}
+                         <div class="invalid-feedback">
+                             {% for error in form.email.errors %}
+                                 <span>{{ error }}</span>
+                             {% endfor %}
+                         </div>
+                {% else %}
+                  {{ form.email(class="form-control form-livedoc-control", placeholder="Email") }}
+                {% endif %}
+             </div>
+            <div class="col-md-6">
+                {{ form.password.label(class="form-label visually-hidden") }}
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="form-control form-livedoc-control", placeholder="Password") }}
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                {{ form.confirm_password.label(class="form-label visually-hidden") }}
+                {% if form.confirm_password.errors %}
+                    {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.confirm_password(class="form-control form-livedoc-control", placeholder="Confirm Password") }}
+                {% endif %}
+            </div>
+            <div class="col-12">
+                <div class="d-grid">
+                {{ form.submit(class="btn btn-primary rounded-pill") }}
+            </div>
+           </div>
+           <div class="col-12">
+            <div class="d-grid">
+                <div class="border-top pt-3">
+                    <small class="text-muted">
+                        Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+                    </small>
+                </div>
+           </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   
+{% endblock content %}
