@@ -32,7 +32,7 @@ A Flask web application that classifies skin-condition images with deep-learning
 
 ## Dataset and results
 
-- Dataset: [CONFIRM THE KAGGLE DATASET NAME AND LINK]. The paper describes 4,002 images covering 22 skin conditions. The raw dataset is **not** included in this repository; please download it from its original source and respect its licence.
+- The paper describes 4,002 images covering 22 skin conditions. The raw dataset is **not** included in this repository; please download it from its original source and respect its licence.
 - The paper reports **80% accuracy** in the testing phase.
 - The demo models bundled here are smaller exports (14 classes for image upload, 9 for real-time detection), so they cover fewer conditions than the 22-condition experiment described in the paper.
 
